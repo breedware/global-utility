@@ -1,0 +1,65 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FETCHMethods = exports.APIMethods = exports.FIREBASETABLE = void 0;
+var FIREBASETABLE;
+(function (FIREBASETABLE) {
+    FIREBASETABLE["ACCOUNTS"] = "accounts";
+    FIREBASETABLE["TICKETS"] = "tickets";
+    FIREBASETABLE["UNMARKEDATTENDANCES"] = "unmarkedattendances";
+    FIREBASETABLE["EMAILS"] = "emails";
+    FIREBASETABLE["SMSMESSENGER"] = "smsmessenger";
+    FIREBASETABLE["NOTIFICATIONS"] = "appnotifications";
+    FIREBASETABLE["PLATFORMADMIN"] = "platformadministrators";
+    FIREBASETABLE["SCHOOLADMIN"] = "schooladministrators";
+    FIREBASETABLE["PARENTS"] = "parents";
+    FIREBASETABLE["PROPRIETORS"] = "proprietors";
+    FIREBASETABLE["SCHOOLSTAFFS"] = "schoolstaffs";
+    FIREBASETABLE["STUDENTS"] = "students";
+    FIREBASETABLE["TERMLYENROLMENTS"] = "termlyenrolments";
+    FIREBASETABLE["SCHOOLS"] = "schools";
+    FIREBASETABLE["SCHOOLLOCATIONS"] = "schoollocations";
+    FIREBASETABLE["SCHOOLCLASSROOMS"] = "schoolclassrooms";
+    FIREBASETABLE["ACADEMICSESSIONS"] = "academicsessions";
+    FIREBASETABLE["BANKACCOUNTS"] = "bankaccounts";
+    FIREBASETABLE["GENERALCONFIGS"] = "generalconfigs";
+    FIREBASETABLE["PAYMENTS"] = "payments";
+    FIREBASETABLE["SCHOOLVEHICLES"] = "schoolvehicles";
+    FIREBASETABLE["VEHICLEONBOARDINGS"] = "vehicleonboardings";
+    FIREBASETABLE["SCHOOLEVENTS"] = "schoolevents";
+    FIREBASETABLE["ATTENDANCES"] = "attendances";
+    FIREBASETABLE["STUDENTPICKERS"] = "studentpickers";
+    FIREBASETABLE["VEHICLETRIPS"] = "vehicletrips";
+    FIREBASETABLE["VEHICLEASSIGNMENTS"] = "vehicleassignments";
+    FIREBASETABLE["STUDENTTRIPS"] = "studenttrips";
+    FIREBASETABLE["PROCESSEDTRANSACTIONS"] = "processedtransactions";
+    FIREBASETABLE["PAYMENTADVICES"] = "paymentadvices";
+    // TRIGGERS
+    FIREBASETABLE["SCHOOLBANKPROGRESS"] = "schoolbankprogress";
+    FIREBASETABLE["TRANSACTIONNOTIFICATIONS"] = "transactionnotifications";
+    FIREBASETABLE["PENDINGSTUDENTDVA"] = "pendingstudentdva";
+})(FIREBASETABLE || (exports.FIREBASETABLE = FIREBASETABLE = {}));
+var APIMethods;
+(function (APIMethods) {
+    APIMethods["userRegistration"] = "userRegistration";
+    APIMethods["updateUserProfile"] = "updateUserProfile";
+    APIMethods["secureRegistration"] = "secureRegistration";
+    APIMethods["saveAttendanceData"] = "saveAttendanceData";
+    APIMethods["saveFinancialData"] = "saveFinancialData";
+    APIMethods["saveSchoolData"] = "saveSchoolData";
+    APIMethods["resetAccountPassword"] = "resetAccountPassword";
+    APIMethods["getServerTime"] = "getServerTime";
+    APIMethods["fetchBanks"] = "fetchBanks";
+    APIMethods["confirmBankAccount"] = "confirmBankAccount";
+    APIMethods["saveSubReceiverAccount"] = "saveSubAccount";
+    APIMethods["fetchData"] = "dbFetcher";
+    APIMethods["createPaystackCustomer"] = "createPaystackCustomer";
+})(APIMethods || (exports.APIMethods = APIMethods = {}));
+var FETCHMethods;
+(function (FETCHMethods) {
+    FETCHMethods["ANALYTICS"] = "func_fetch_school_analytics";
+    FETCHMethods["TERMLY_DEBTORS"] = "func_fetch_term_debtors";
+    FETCHMethods["SCHOOLUNMARKEDATTENDANCES"] = "func_fetch_unmarked_attendance";
+    FETCHMethods["USERUNMARKEDATTENDANCES"] = "func_fetch_user_unmarked_attendance";
+    FETCHMethods["ADVICE_DEBTORS"] = "func_fetch_advice_debtors";
+})(FETCHMethods || (exports.FETCHMethods = FETCHMethods = {}));
+//# sourceMappingURL=firestore.table.js.map
