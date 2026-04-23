@@ -118,14 +118,35 @@ export const urlDecode = (encodedString) => {
     }
 };
 export function generateTransactionReference(prefix) {
-    const now = new Date();
-    // Format date-time as YYYYMMDDHHMMSS
-    const timestamp = now
+    const MIN_LENGTH = 16;
+    const MAX_LENGTH = 50;
+    // 1. Normalize prefix → lowercase + allowed chars only
+    let safePrefix = (prefix || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9_-]/g, "");
+    // 2. Generate timestamp (YYYYMMDDHHMMSS)
+    const timestamp = new Date()
         .toISOString()
-        .replace(/[-T:.Z]/g, "") // Remove separators
-        .slice(0, 14); // Keep only YYYYMMDDHHMMSS
-    // Generate a random 6-digit number
-    const randomPart = Math.floor(100000 + Math.random() * 900000);
-    return `${prefix}${timestamp}${randomPart}`;
+        .replace(/[-T:.Z]/g, "")
+        .slice(0, 14);
+    // 3. Generate random string (base36 → [a-z0-9])
+    const randomPart = Math.random().toString(36).slice(2, 10);
+    // 4. Combine
+    let ref = `${safePrefix}_${timestamp}_${randomPart}`;
+    // 5. Ensure minimum length
+    while (ref.length < MIN_LENGTH) {
+        ref += Math.random().toString(36).charAt(2);
+    }
+    // 6. Enforce max length
+    if (ref.length > MAX_LENGTH) {
+        ref = ref.slice(0, MAX_LENGTH);
+    }
+    return ref;
 }
+export var GLOBALTRANSACTION;
+(function (GLOBALTRANSACTION) {
+    GLOBALTRANSACTION["CHECKOUT"] = "checkout";
+    GLOBALTRANSACTION["DEPOSIT"] = "deposit";
+    GLOBALTRANSACTION["TRANSFER"] = "transfer";
+})(GLOBALTRANSACTION || (GLOBALTRANSACTION = {}));
 //# sourceMappingURL=index.js.map

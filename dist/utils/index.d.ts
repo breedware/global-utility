@@ -54,6 +54,12 @@ export interface FundTransferInformation {
     recipient: string;
     reason: string;
     formData: Record<string, any>;
+    callbackUrl: string;
+}
+export declare enum GLOBALTRANSACTION {
+    CHECKOUT = "checkout",
+    DEPOSIT = "deposit",
+    TRANSFER = "transfer"
 }
 export {};
 //# sourceMappingURL=index.d.ts.map
