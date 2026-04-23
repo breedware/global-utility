@@ -32,5 +32,28 @@ export declare const urlEncode: (data: Record<string, any>) => string;
  * Decodes a URL-safe Base64 string back into a JSON object.
  */
 export declare const urlDecode: <T = Record<string, any>>(encodedString: string) => T | null;
+export declare function generateTransactionReference(prefix: string): string;
+export interface DVAInformation {
+    accountNumber: string;
+    appAccountId: number;
+    callbackUrl: string;
+    appName: string;
+}
+export interface DVAFormData {
+    accountId: number;
+    accountNumber: string;
+    amount: number;
+    transactionCharge: number;
+    transactionReference: string;
+    narration: string;
+}
+export interface FundTransferInformation {
+    source: 'balance';
+    amount: number;
+    reference: string;
+    recipient: string;
+    reason: string;
+    formData: Record<string, any>;
+}
 export {};
 //# sourceMappingURL=index.d.ts.map

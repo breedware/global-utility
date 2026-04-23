@@ -186,3 +186,9 @@ export interface FundTransferInformation {
   formData: Record<string, any>
 }
 
+export enum GLOBALTRANSACTION {
+  CHECKOUT = 'checkout',
+  DEPOSIT = 'deposit',
+  TRANSFER = 'transfer'
+}
+

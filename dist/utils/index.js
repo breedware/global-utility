@@ -117,4 +117,15 @@ export const urlDecode = (encodedString) => {
         return null;
     }
 };
+export function generateTransactionReference(prefix) {
+    const now = new Date();
+    // Format date-time as YYYYMMDDHHMMSS
+    const timestamp = now
+        .toISOString()
+        .replace(/[-T:.Z]/g, "") // Remove separators
+        .slice(0, 14); // Keep only YYYYMMDDHHMMSS
+    // Generate a random 6-digit number
+    const randomPart = Math.floor(100000 + Math.random() * 900000);
+    return `${prefix}${timestamp}${randomPart}`;
+}
 //# sourceMappingURL=index.js.map
