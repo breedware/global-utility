@@ -145,3 +145,44 @@ export const urlDecode = <T = Record<string, any>>(encodedString: string): T | n
     return null;
   }
 };
+
+export function generateTransactionReference(prefix: string): string {
+    const now = new Date();
+  
+    // Format date-time as YYYYMMDDHHMMSS
+    const timestamp = now
+      .toISOString()
+      .replace(/[-T:.Z]/g, "") // Remove separators
+      .slice(0, 14); // Keep only YYYYMMDDHHMMSS
+  
+    // Generate a random 6-digit number
+    const randomPart = Math.floor(100000 + Math.random() * 900000);
+  
+    return `${prefix}${timestamp}${randomPart}`;
+  }
+
+export interface DVAInformation {
+    accountNumber: string;
+    appAccountId: number;
+    callbackUrl: string;
+    appName: string;
+}
+
+export interface DVAFormData {
+  accountId: number;
+  accountNumber: string;
+  amount: number;
+  transactionCharge: number;
+  transactionReference: string;
+  narration: string;
+}
+
+export interface FundTransferInformation {
+  source: 'balance';
+  amount: number;
+  reference: string;
+  recipient: string;
+  reason: string;
+  formData: Record<string, any>
+}
+

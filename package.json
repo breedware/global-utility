@@ -1,6 +1,6 @@
 {
   "name": "@breedware/global-utility",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Universal utilities for Breedware services (Firebase & React)",
   "type": "module",
   "main": "./dist/index.cjs",
