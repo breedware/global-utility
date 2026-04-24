@@ -63,15 +63,24 @@ export interface TransCompletePayload {
 }
 
 export interface BulkSMSPayload {
-    username: string; 
-    phoneNumbers: string[];
-    message: string;
-    senderId: string;
+    providerLoad: {
+        username: string; 
+        phoneNumbers: string[];
+        message: string;
+        senderId: string;
+    },
+    recipientIds: number[]
+    numPages: number;
 }
 
 export interface SingleSMSPayload {
-    username: string; 
-    to: string;
-    message: string;
-    senderId: string;
+    providerLoad: {
+        username: string; 
+        to: string;
+        message: string;
+        senderId: string;
+    }
+    numPages: number;
+    isOtp?: boolean;
+    recipientId: number;
 }

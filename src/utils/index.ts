@@ -6,6 +6,9 @@ interface SpaceLocation {
   locationName?: string;
 }
 
+export const breedwareSMSCharges = 10;
+export const breedwareGatewayCharges = 50;
+
 export function generateRandomPassword(length: number = 12): string {
     const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const lowercase = "abcdefghijklmnopqrstuvwxyz";
@@ -210,5 +213,47 @@ export enum GLOBALTRANSACTION {
   CHECKOUT = 'checkout',
   DEPOSIT = 'deposit',
   TRANSFER = 'transfer'
+}
+
+export const computeTransactionCharge = (param:{
+  type: GLOBALTRANSACTION,
+  amount: number
+}):number =>{
+  const {type, amount} = param;
+  return paystackComputer(amount, type) + breedwareGatewayCharges
+}
+
+const stampDuty = (amount: number): number => {
+  return amount >= 10_000 ? 50: 0
+}
+
+const paystackComputer = (amount: number, type: GLOBALTRANSACTION): number =>{
+  let value = 0;
+  switch (type) {
+    case GLOBALTRANSACTION.CHECKOUT:
+      value = Math.min(
+        ((0.015 * amount) + (amount > 2_500 ? 100 : 0)),
+        2_000
+      );
+      break;
+    
+    case GLOBALTRANSACTION.DEPOSIT:
+      value = Math.min(
+        (0.01 * amount),
+        300
+      );
+      break;
+    
+    case GLOBALTRANSACTION.TRANSFER:
+      value = (
+        amount >= 50_000 ? 50 :
+        amount >= 5_000 ? 25 : 10
+      ) + stampDuty(amount);
+      break;
+  
+    default:
+      break;
+  }
+  return value;
 }
 
